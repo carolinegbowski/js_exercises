@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset=utf-8 />
+    <title>Calculator - JavaScript program to calculate multiplication and division of two numbers </title>
+    <style type="text/css">
+       
+       body {
+           font-family: Georgia, 'Times New Roman', Times, serif;
+           text-align: center;
+       }
+       header {
+           color: white;
+           font-size: 30px;
+           font-weight: bold;
+           max-width: 900px;
+           background: goldenrod;
+           padding: 25px;
+           margin-bottom: 20px;
+       }
+       .myAnswer {
+            font-size : 50px;
+            color: goldenrod;
+            font-weight: bold;
+            padding: 10px;
+        }
+        button {
+            font-size: 18px;
+            height: 30px;
+            width: 300px;
+            margin-bottom: 30px;
+        }
+        form {
+            padding-bottom: 25px;
+        }
+        /* Enter CSS styling here */
+
+    </style> 
+</head>
+<body>
+    <header>CALCULATOR</header>
+    <form id="frm1" action="/examplepath" method="get" class="form-example">
+        <div class="card">
+            <label for="num1">Enter first number: </label>
+            <input type="number" name="num1" id="num1" required></input>
+            <label for="num2">Enter second number: </label>
+            <input type="number" name="num2" id="num2" required></input>
+        </div>
+    </form>
+    <button onclick="multiply()">Multiply</button>
+    <button onclick="divide()">Divide</button>
+    <div class="myAnswer" id="myAnswer"></div>
+
+    <!-- Similarly to the getElementById exercise, create a basic calculator which takes two inputs 
+    then either multiplies or divides the two given values -->
+    <!-- Enter HTML code here -->
+<script>
+    function multiply() {
+        let num1 = Number(document.getElementById("num1").value)
+        let num2 = Number(document.getElementById("num2").value)
+        let myAnswer = num1 * num2;
+        let ourDiv = document.getElementById("myAnswer");
+        ourDiv.innerHTML = "Answer: " + myAnswer;
+    }
+    function divide() {
+        let num1 = Number(document.getElementById("num1").value)
+        let num2 = Number(document.getElementById("num2").value)
+        let myAnswer = num1 / num2;
+        let ourDiv = document.getElementById("myAnswer");
+        ourDiv.innerHTML = "Answer: " + myAnswer;
+    }
+
+</script>  
+</body>
+</html>

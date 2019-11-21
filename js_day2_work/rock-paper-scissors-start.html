@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>let and const real world</title>
+  <style type="text/css">
+    .topHeader{
+        font-family :Georgia, 'Times New Roman', Times, serif;
+        font-size: 50px; 
+        text-align: center;
+        color: white;
+        background: blueviolet;
+        padding: 25px;
+        margin-bottom: 25px;
+    }
+
+    body{
+        font-family: Georgia, 'Times New Roman', Times, serif;
+        font-size: 18px;
+        text-align: center;
+    }
+    input {
+        margin-bottom: 50px;
+    }
+    .lastLine {
+        margin-bottom: 50px;
+    }
+    .gameOutput {
+        font-size: 35px;
+        font-weight: bold;
+    }
+
+  </style>
+</head>
+<body>
+    <div>
+        <!-- PLEASE VIEW THE PAGE SOURCE BY CLICKED F12 or RIGHT CLICKING ON THE PAGE AND SELECTING INSPECT  -->
+    </div>
+    <header class="topHeader">Rock, Paper, Scissors</header>
+    <label for="userInput">Enter rock, paper, or scissors: </label>
+    <input type="text" name="userInput" id="userInput" required></input>
+    <button onclick="getInputs()">THROW!</button>
+    <div id="userOutput"></div>
+    <div class="lastLine" id="compOutput"></div>
+    <div class="roundOutput" id="roundOutput"></div>
+    <div class="gameOutput" id="gameOutput"></div>
+<script>
+    // Our code will break the game into four parts:
+    // 1) Get the user's choice.
+    // 2) Get the opponent's choice.
+    // 3) Compare the two choices and determine a winner.
+    // 4) Start the program and display the results.
+
+
+    // Get User Input
+    // Create a method for getting user input. You can use if statements or switch statements. 
+    function getUserInput() {
+        let userInput = document.getElementById("userInput").value;
+        userInput = userInput.toLowerCase()
+        if (userInput === "rock" || userInput === "paper" || userInput === "scissors") {
+            let ourDiv = document.getElementById("userOutput");
+            ourDiv.innerHTML = "You threw: " + userInput;
+        }
+        else {
+            userInput = "Invalid Option"
+            let ourDiv = document.getElementById("userOutput");
+            ourDiv.innerHTML = "You threw: " + userInput;
+        }
+        return userInput;
+    }
+
+    // Get random computer input
+    // Think about the built in Math JS methods 
+    function getCompInput() {
+        let num = Math.floor(Math.random()*3);
+        let compInput = ""
+        if (num === 0) {
+            compInput = "rock";
+        }        
+        else if (num === 1) {
+            compInput = "paper";
+        }
+        else if (num === 2) {
+            compInput = "scissors";
+        }
+        let ourDiv = document.getElementById("compOutput");
+        ourDiv.innerHTML = "The computer threw: " + compInput;
+        return compInput;
+    }
+
+    function getInputs() {
+        let userInput = getUserInput()
+        let compInput = getCompInput()
+        console.log("function getInputs, " + userInput +" "+ compInput)
+        playRound(userInput, compInput)
+
+    }
+    
+    // Determine winner 
+    // Think about how many variables you need to pass in, and what conditions you need to set up  
+
+    function playRound(userInput, compInput) {
+        console.log(userInput)
+        console.log(compInput)
+        let userScore = 0
+        let compScore = 0
+        let outputMessage = ""
+        console.log(userScore, compScore, outputMessage)
+
+
+        if (userInput === "rock") {
+            if (compInput === "paper") {
+                outputMessage = "Round lost. Paper beats rock"
+                compScore += 1
+            }
+            else if (compInput === "scissors") {
+                outputMessage = "Round won! Rock beats scissors" 
+                userScore += 1
+            }
+            else {
+                outputMessage = "TIE ROUND"
+            }
+            console.log(outputMessage)
+            console.log(compScore)
+            console.log(userScore)
+            let ourDiv = document.getElementById("roundOutput");
+            ourDiv.innerHTML = outputMessage
+        }
+
+
+        else if (userInput === "paper") {
+            if (compInput === "scissors") {
+                outputMessage = "Round lost. Scissors beat paper"
+                compScore += 1
+            }
+            else if (compInput === "rock") {
+                outputMessage = "Round won! Paper beats rock" 
+                userScore += 1
+            }
+            else {
+                outputMessage = "TIE ROUND"
+            }
+            console.log(outputMessage)
+            console.log(compScore)
+            console.log(userScore)
+            let ourDiv = document.getElementById("roundOutput");
+            ourDiv.innerHTML = outputMessage
+        }
+
+
+        else if (userInput === "scissors") {
+            if (compInput === "rock") {
+                outputMessage = "Round lost. Rock beats scissors"
+                compScore += 1
+            }
+            else if (compInput === "paper") {
+                outputMessage = "Round won! Scissors beat paper" 
+                userScore += 1
+            }
+            else {
+                outputMessage = "TIE ROUND"
+            }
+            console.log(outputMessage)
+            console.log(compScore)
+            console.log(userScore)
+            let ourDiv = document.getElementById("roundOutput");
+            ourDiv.innerHTML = outputMessage
+        }
+
+
+        // if (userScore === 2) {
+        //     outputMessage = "GAME WON"
+        // }
+        // else {
+        //     outputMessage = "GAME LOST"
+        // }
+        // let ourDiv = document.getElementById("gameOutput");
+        // ourDiv.innerHTML = outputMessage
+    }
+    // Log results of the game
+    // Call on the methods created earlier and fix the user input 
+    // console log the results of the match 
+  
+    
+</script>   
+</body>
+</html>
